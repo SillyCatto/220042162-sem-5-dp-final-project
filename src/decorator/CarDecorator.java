@@ -1,16 +1,12 @@
 package decorator;
 
 import car.Car;
-import strategy.EngineBehavior;
-import strategy.TurbochargerBehavior;
 
 public abstract class CarDecorator extends Car {
     protected Car decoratedCar;
 
     public CarDecorator(Car decoratedCar) {
         this.decoratedCar = decoratedCar;
-        this.engineBehavior = decoratedCar.getEngineBehavior();
-        this.turbochargerBehavior = decoratedCar.getTurbochargerBehavior();
     }
 
     @Override
@@ -31,6 +27,16 @@ public abstract class CarDecorator extends Car {
     @Override
     public void accelerate() {
         decoratedCar.accelerate();
+    }
+
+    @Override
+    public void performEngine() {
+        decoratedCar.performEngine();
+    }
+
+    @Override
+    public void performTurbo() {
+        decoratedCar.performTurbo();
     }
 
     public abstract void applyNos();
